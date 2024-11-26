@@ -13,10 +13,10 @@ services:
     networks:
       - devops
     depends_on:
-      - gitea_service
-      - jenkins_service
+      - gitea
+      - jenkins
 
-  gitea_service:
+  gitea:
     image: gitea/gitea:1.22.3
     container_name: gitea_service
     environment:
@@ -43,7 +43,7 @@ services:
 
   postgres_db:
     image: postgres:14
-    container_name: postgres_service_devops
+    container_name: postgres_db
     restart: always
     environment:
       - POSTGRES_USER=gitea
@@ -54,7 +54,7 @@ services:
     volumes:
       - ./postgres:/var/lib/postgresql/data
 
-  jenkins_service:
+  jenkins:
     image: jenkins/jenkins:lts-jdk17
     container_name: jenkins_service
     environment:
