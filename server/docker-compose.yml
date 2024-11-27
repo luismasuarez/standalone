@@ -1,0 +1,55 @@
+services:
+  # Servicio para tu imagen cnf-firewall
+  firewall:
+    image: cnf-firewall:1.1  # La imagen de tu servidor firewall
+    ports:
+      - "5000:5000"  # Exponer el puerto 5000 del contenedor al host
+    environment:
+      - NODE_ENV=production
+
+#   # Servicio para NGINX
+#   nginx:
+#     image: nginx:latest
+#     volumes:
+#       - ./nginx.conf:/etc/nginx/nginx.conf  # Configuración personalizada de NGINX
+#     ports:
+#       - "80:80"  # Exponer puerto 80
+#     networks:
+#       - app-network
+#     depends_on:
+#       - firewall  # Asegurarse de que el firewall esté activo antes de iniciar
+
+#   # Servicio para Jenkins
+#   jenkins:
+#     image: jenkins/jenkins:lts
+#     ports:
+#       - "8080:8080"  # Exponer el puerto de Jenkins
+#       - "50000:50000"  # Puerto para agentes de Jenkins
+#     networks:
+#       - app-network
+#     volumes:
+#       - jenkins_data:/var/jenkins_home  # Volumen persistente para Jenkins
+
+#   # Servicio para Gitea
+#   gitea:
+#     image: gitea/gitea:latest
+#     ports:
+#       - "3000:3000"  # Exponer puerto de Gitea
+#       - "22:22"  # Exponer puerto SSH de Gitea para repositorios
+#     networks:
+#       - app-network
+#     environment:
+#       - USER_UID=1000
+#       - USER_GID=1000
+#     volumes:
+#       - gitea_data:/data  # Volumen persistente para Gitea
+
+# # Redes personalizadas para que los servicios puedan comunicarse entre ellos
+# networks:
+#   app-network:
+#     driver: bridge
+
+# # Volúmenes persistentes para Jenkins y Gitea
+# volumes:
+#   jenkins_data:
+#   gitea_data:

@@ -27,7 +27,7 @@ services:
       - GITEA__database__NAME=gitea
       - GITEA__database__USER=gitea
       - GITEA__database__PASSWD=${GITEA_DB_PASSWD}
-      - GITEA__webhook__ALLOWED_HOST_LIST=jenkins_service_devops,172.23.164.166
+      - GITEA__webhook__ALLOWED_HOST_LIST=jenkins_service_devops,172.23.164.166,jenkins.net
     restart: always
     networks:
       - devops

@@ -3,4 +3,7 @@ postgres/
 jenkins_home/
 dbgate-data/
 .env
-temp.yml
+.temp/
+server/node_modules/
+server/cnf
+tree.sh

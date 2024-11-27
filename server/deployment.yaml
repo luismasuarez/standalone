@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cnf-firewall
+spec:
+  replicas: 2  # Número de réplicas del contenedor (puedes cambiar este valor)
+  selector:
+    matchLabels:
+      app: cnf-firewall
+  template:
+    metadata:
+      labels:
+        app: cnf-firewall
+    spec:
+      containers:
+      - name: cnf-firewall
+        image: luismasuarezzz/cnf-firewall:1.1  # Usa el nombre de tu imagen
+        ports:
+        - containerPort: 5000  # Puerto en el contenedor
